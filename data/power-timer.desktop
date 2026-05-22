@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Power Timer
+Comment=Programmez l'extinction, le redémarrage ou la veille du système
+Exec=env POWER_TIMER_DESKTOP_EXEC=1 power-timer
+TryExec=power-timer
+Icon=power-timer
+StartupNotify=true
+StartupWMClass=io.github.powertimer.PowerTimer
+Terminal=false
+Categories=System;
+Keywords=shutdown;reboot;suspend;hibernate;timer;power;
