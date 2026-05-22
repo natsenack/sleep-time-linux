@@ -45,7 +45,7 @@ fi
 
 echo "5/ Build extension and validate zip"
 bash build-extension.sh
-ZIP=build/power-timer@natsenack.github.io.zip
+ZIP=build/power-timer@threeaxe.zip
 if [ ! -f "$ZIP" ]; then echo "ZIP missing"; exit 2; fi
 unzip -l "$ZIP"
 if ! unzip -l "$ZIP" | awk '{print $4}' | grep -E '^extension.js$' >/dev/null; then echo "extension.js missing in zip"; exit 2; fi

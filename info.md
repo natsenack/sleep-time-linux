@@ -5,7 +5,7 @@
 bash build-extension.sh
 ```
 
-L'archive est générée dans `build/power-timer@natsenack.github.io.zip`.
+L'archive est générée dans `build/power-timer@threeaxe.zip`.
 
 ## Lancer l'application en développement
 ```bash

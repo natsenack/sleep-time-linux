@@ -1,6 +1,6 @@
 .PHONY: help run build-extension build-deb install-extension enable-extension disable-extension uninstall-extension clean
 
-EXTENSION_UUID = power-timer@natsenack.github.io
+EXTENSION_UUID = power-timer@threeaxe
 
 help:
 	@echo "Power Timer - Available targets:"

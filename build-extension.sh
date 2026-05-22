@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-EXTENSION_UUID="power-timer@natsenack.github.io"
+EXTENSION_UUID="power-timer@threeaxe"
 BUILD_DIR="${ROOT_DIR}/build"
 STAGING_DIR="${BUILD_DIR}/${EXTENSION_UUID}"
 ZIP_PATH="${BUILD_DIR}/${EXTENSION_UUID}.zip"

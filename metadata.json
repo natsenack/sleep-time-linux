@@ -1,5 +1,5 @@
 {
-  "uuid": "power-timer@natsenack.github.io",
+  "uuid": "power-timer@threeaxe",
   "name": "Power Timer",
   "description": "Planifiez des actions d'alimentation depuis le panneau GNOME Shell.",
   "shell-version": ["46"],

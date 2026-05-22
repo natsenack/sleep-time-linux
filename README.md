@@ -17,13 +17,13 @@ Construire l'archive de soumission:
 bash build-extension.sh
 ```
 
-L'archive finale est générée dans `build/power-timer@natsenack.github.io.zip`.
+L'archive finale est générée dans `build/power-timer@threeaxe.zip`.
 
 Pour tester localement dans GNOME Shell:
 
 ```bash
-gnome-extensions install --force build/power-timer@natsenack.github.io.zip
-gnome-extensions enable power-timer@natsenack.github.io
+gnome-extensions install --force build/power-timer@threeaxe.zip
+gnome-extensions enable power-timer@threeaxe
 ```
 
 ## Version autonome

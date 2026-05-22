@@ -55,15 +55,6 @@ function formatRemaining(seconds) {
     return `${hours} h ${leftoverMinutes.toString().padStart(2, '0')} min`;
 }
 
-function readPowerStates() {
-    try {
-        const [, contents] = GLib.file_get_contents('/sys/power/state');
-        return TEXT_DECODER.decode(contents).trim().split(/\s+/).filter(Boolean);
-    } catch (_error) {
-        return [];
-    }
-}
-
 function setMenuOrnament(item, checked) {
     if (typeof item.setOrnament === 'function')
         item.setOrnament(checked ? PopupMenu.Ornament.CHECK : PopupMenu.Ornament.NONE);
@@ -98,11 +89,12 @@ class PowerTimerIndicator extends PanelMenu.Button {
         super(0.0, APP_NAME, false);
 
         this._systemctlPath = GLib.find_program_in_path('systemctl');
-        this._powerStates = readPowerStates();
+        this._powerStates = [];
         this._selectedAction = 'shutdown';
         this._selectedDurationMinutes = 60;
         this._deadlineUsec = 0;
         this._tickSourceId = 0;
+        this._menuSignalId = 0;
         this._actionItems = new Map();
         this._durationItems = new Map();
 
@@ -116,15 +108,24 @@ class PowerTimerIndicator extends PanelMenu.Button {
         this._refreshAvailability();
         this._syncUi();
 
-        this.menu.connect('open-state-changed', (_menu, isOpen) => {
+        this._menuSignalId = this.menu.connect('open-state-changed', (_menu, isOpen) => {
             if (isOpen)
                 this._refreshAvailability();
             this._syncUi();
         });
+
+        // Load power states asynchronously
+        this._loadPowerStatesAsync();
     }
 
     destroy() {
         this._clearTimer();
+
+        if (this._menuSignalId !== 0) {
+            this.menu.disconnect(this._menuSignalId);
+            this._menuSignalId = 0;
+        }
+
         super.destroy();
     }
 
@@ -168,6 +169,21 @@ class PowerTimerIndicator extends PanelMenu.Button {
         this._cancelItem = new PopupMenu.PopupMenuItem('Annuler le minuteur');
         this._cancelItem.connect('activate', () => this._clearTimer(true));
         this.menu.addMenuItem(this._cancelItem);
+    }
+
+    _loadPowerStatesAsync() {
+        // Load power states asynchronously to avoid blocking the shell
+        const file = Gio.File.new_for_path('/sys/power/state');
+        file.load_contents_async(null, (source, result) => {
+            try {
+                const [contents] = source.load_contents_finish(result);
+                this._powerStates = TEXT_DECODER.decode(contents).trim().split(/\s+/).filter(Boolean);
+                this._refreshAvailability();
+                this._syncUi();
+            } catch (_error) {
+                // Ignore errors, keep empty power states
+            }
+        });
     }
 
     _refreshAvailability() {
