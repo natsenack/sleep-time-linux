@@ -2,7 +2,7 @@
   "uuid": "power-timer@threeaxe",
   "name": "Power Timer",
   "description": "Planifiez des actions d'alimentation depuis le panneau GNOME Shell.",
-  "shell-version": ["46"],
+  "shell-version": ["46", "50"],
   "url": "https://github.com/natsenack/sleep-time-linux",
   "version-name": "1.0.0"
 }

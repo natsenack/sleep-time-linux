@@ -9,7 +9,7 @@ La version soumise à GNOME Extensions repose sur [metadata.json](metadata.json)
 
 ## Extension GNOME Shell
 
-La soumission GNOME est basée sur GNOME Shell 46.
+La soumission GNOME cible GNOME Shell 46 et 50.
 
 Construire l'archive de soumission:
 

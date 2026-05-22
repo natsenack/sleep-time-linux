@@ -10,7 +10,7 @@ Tous les chemins sont relatifs à la racine du dépôt.
 
 ## Prérequis
 
-- GNOME Shell (ici testé sur la version 46)
+- GNOME Shell (testé sur les versions 46 et 50)
 - `gnome-extensions` (outil en ligne de commande)
 - `zip`, `dpkg-deb` et outils standards Unix
 - Python 3 et dépendances si vous voulez exécuter l'application autonome

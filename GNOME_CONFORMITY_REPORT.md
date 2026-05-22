@@ -199,7 +199,7 @@ Archive: build/power-timer@threeaxe.zip
 5. 📍 **PRÊT POUR UPLOAD** : https://extensions.gnome.org/upload/
 
 ### Recommandations Avant Soumission
-- [ ] Tester extension dans GNOME Shell 46 : `make install-extension && make enable-extension`
+- [ ] Tester extension dans GNOME Shell 46 et 50 : `make install-extension && make enable-extension`
 - [ ] Vérifier fonctionnalité du menu et countdown
 - [ ] Tester avec `make disable-extension` pour nettoyage propre
 - [ ] Pousser sur GitHub pour CI workflow
