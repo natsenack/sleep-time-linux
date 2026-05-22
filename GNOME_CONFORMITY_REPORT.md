@@ -75,7 +75,7 @@
   - ✅ `uuid` : `power-timer@threeaxe` (format valide)
   - ✅ `name` : `Power Timer` (unique, pas de conflit)
   - ✅ `description` : Description complète en français
-  - ✅ `shell-version` : `["46"]` (version stable)
+  - ✅ `shell-version` : `["46", "50"]` (versions stables)
   - ✅ `url` : GitHub repo valide
   - ✅ `version-name` : Version explicite
 - **Référence** : [metadata.json](metadata.json)
