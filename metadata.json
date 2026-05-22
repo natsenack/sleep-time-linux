@@ -1,0 +1,8 @@
+{
+  "uuid": "power-timer@natsenack.github.io",
+  "name": "Power Timer",
+  "description": "Planifiez des actions d'alimentation depuis le panneau GNOME Shell.",
+  "shell-version": ["46"],
+  "url": "https://github.com/natsenack/sleep-time-linux",
+  "version-name": "1.0.0"
+}

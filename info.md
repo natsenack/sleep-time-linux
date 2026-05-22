@@ -1,5 +1,12 @@
 # Commandes de déploiement
 
+## Construire l'extension GNOME Shell
+```bash
+bash build-extension.sh
+```
+
+L'archive est générée dans `build/power-timer@natsenack.github.io.zip`.
+
 ## Lancer l'application en développement
 ```bash
 bash launch.sh

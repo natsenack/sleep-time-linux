@@ -6,7 +6,8 @@ PACKAGE_NAME="power-timer"
 VERSION="1.0.0"
 ARCH="all"
 BUILD_DIR="${ROOT_DIR}/build"
-STAGING_DIR="${BUILD_DIR}/${PACKAGE_NAME}_${VERSION}_${ARCH}"
+STAGING_DIR="/tmp/power-timer-deb-$$"
+FINAL_STAGING="${BUILD_DIR}/${PACKAGE_NAME}_${VERSION}_${ARCH}"
 DEB_PATH="${BUILD_DIR}/${PACKAGE_NAME}_${VERSION}_${ARCH}.deb"
 
 if [[ ! -f "${ROOT_DIR}/app.py" ]]; then
@@ -29,8 +30,13 @@ if [[ ! -f "${ROOT_DIR}/data/icons/power-timer.png" ]]; then
     exit 1
 fi
 
-rm -rf "${STAGING_DIR}" "${DEB_PATH}"
-mkdir -p \
+rm -rf "${BUILD_DIR}/${PACKAGE_NAME}_${VERSION}_${ARCH}.deb"
+mkdir -p "${BUILD_DIR}"
+
+trap "rm -rf '${STAGING_DIR}'" EXIT
+
+mkdir -p "${STAGING_DIR}"
+install -d -m 0755 \
     "${STAGING_DIR}/DEBIAN" \
     "${STAGING_DIR}/usr/bin" \
     "${STAGING_DIR}/usr/share/power-timer" \
@@ -56,6 +62,10 @@ Description: GNOME timer for system power actions
  Power Timer is a GTK4 and libadwaita application for scheduling shutdown,
  restart, suspend, hibernate and hybrid sleep actions from a modern GNOME UI.
 EOF
+
+find "${STAGING_DIR}" -type d -exec chmod 0755 {} \;
+find "${STAGING_DIR}" -type f -exec chmod 0644 {} \;
+chmod 0755 "${STAGING_DIR}/DEBIAN/postinst" "${STAGING_DIR}/usr/bin/power-timer"
 
 dpkg-deb --root-owner-group --build "${STAGING_DIR}" "${DEB_PATH}"
 echo "Package generated: ${DEB_PATH}"

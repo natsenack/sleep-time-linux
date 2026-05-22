@@ -1,0 +1,7 @@
+{
+  "name": "power-timer-gjs",
+  "version": "1.0.0",
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  }
+}

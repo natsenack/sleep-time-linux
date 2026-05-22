@@ -40,3 +40,8 @@ env/
 build/
 *.deb
 debian/.debhelper/
+*.zip
+
+# Node.js / npm
+node_modules/
+package-lock.json

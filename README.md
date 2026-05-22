@@ -1,5 +1,33 @@
 # Power Timer
 
+Power Timer existe ici sous deux formes:
+
+- une application GTK4/libadwaita en Python 3, conservée comme version autonome;
+- une extension GNOME Shell GJS, qui est la version destinée à extensions.gnome.org.
+
+La version soumise à GNOME Extensions repose sur [metadata.json](metadata.json) et [extension.js](extension.js).
+
+## Extension GNOME Shell
+
+La soumission GNOME est basée sur GNOME Shell 46.
+
+Construire l'archive de soumission:
+
+```bash
+bash build-extension.sh
+```
+
+L'archive finale est générée dans `build/power-timer@natsenack.github.io.zip`.
+
+Pour tester localement dans GNOME Shell:
+
+```bash
+gnome-extensions install --force build/power-timer@natsenack.github.io.zip
+gnome-extensions enable power-timer@natsenack.github.io
+```
+
+## Version autonome
+
 Power Timer est une application GNOME en Python 3, GTK4 et libadwaita qui permet de programmer des actions système depuis une interface moderne.
 
 ## Fonctions
@@ -14,7 +42,7 @@ Power Timer est une application GNOME en Python 3, GTK4 et libadwaita qui permet
 - Désactivation automatique des modes non pris en charge
 - Icône de zone de notification pour rouvrir l'application quand la fenêtre est réduite ou fermée
 
-## Dépendances
+## Dépendances de la version autonome
 
 Installez les paquets Debian suivants :
 
@@ -29,7 +57,7 @@ Installez les paquets Debian suivants :
 
 Selon votre environnement, `sudo` doit aussi être disponible si vous ne lancez pas l'application en root.
 
-## Installation
+## Installation de la version autonome
 
 Après génération du paquet, installez-le avec :
 
